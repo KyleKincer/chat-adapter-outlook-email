@@ -1,0 +1,37 @@
+{
+  "id": "AAMkAGI2TG93AAA=",
+  "conversationId": "AAQkAGI2TG93AAA=",
+  "subject": "Test email thread",
+  "body": {
+    "contentType": "html",
+    "content": "<html><body><p>Hello, this is a test email.</p></body></html>"
+  },
+  "from": {
+    "emailAddress": {
+      "name": "Alice Smith",
+      "address": "alice@contoso.com"
+    }
+  },
+  "toRecipients": [
+    {
+      "emailAddress": {
+        "name": "Bot",
+        "address": "bot@contoso.com"
+      }
+    }
+  ],
+  "ccRecipients": [],
+  "receivedDateTime": "2026-04-10T12:00:00Z",
+  "sentDateTime": "2026-04-10T11:59:55Z",
+  "internetMessageId": "<ABC123@contoso.com>",
+  "internetMessageHeaders": [
+    {
+      "name": "Content-Type",
+      "value": "text/html"
+    }
+  ],
+  "hasAttachments": false,
+  "isRead": false,
+  "isDraft": false,
+  "conversationIndex": "AQHaXYZ123=="
+}

@@ -1,0 +1,62 @@
+{
+  "name": "chat-adapter-outlook-email",
+  "version": "0.1.0",
+  "description": "Microsoft Outlook / M365 email adapter for Vercel Chat SDK via Microsoft Graph",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [
+    "chat-sdk",
+    "chat-adapter",
+    "outlook",
+    "microsoft-graph",
+    "email",
+    "microsoft-365",
+    "exchange-online"
+  ],
+  "peerDependencies": {
+    "@chat-adapter/shared": "^4.15.0",
+    "chat": "^4.15.0"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.0.0",
+    "@react-email/components": "^1.0.0",
+    "@react-email/render": "^2.0.0",
+    "hast-util-to-html": "^9.0.0",
+    "mdast-util-to-hast": "^13.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.0.0",
+    "@chat-adapter/shared": "^4.20.0",
+    "@types/mdast": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "chat": "^4.20.0",
+    "react": "^19.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.0.0"
+  }
+}

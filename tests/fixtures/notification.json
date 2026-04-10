@@ -1,0 +1,17 @@
+{
+  "value": [
+    {
+      "subscriptionId": "sub-001",
+      "changeType": "created",
+      "clientState": "test-secret",
+      "resource": "users/bot@contoso.com/messages/AAMkAGI2TG93AAA=",
+      "resourceData": {
+        "@odata.type": "#Microsoft.Graph.Message",
+        "@odata.id": "users/bot@contoso.com/messages/AAMkAGI2TG93AAA=",
+        "id": "AAMkAGI2TG93AAA="
+      },
+      "subscriptionExpirationDateTime": "2026-04-17T12:00:00Z",
+      "tenantId": "tenant-001"
+    }
+  ]
+}
