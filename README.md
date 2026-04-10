@@ -1,5 +1,8 @@
 # chat-adapter-outlook-email
 
+[![npm version](https://img.shields.io/npm/v/chat-adapter-outlook-email)](https://www.npmjs.com/package/chat-adapter-outlook-email)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Microsoft Outlook / M365 email adapter for the [Vercel Chat SDK](https://chat-sdk.dev). Treats email conversations as Chat SDK threads using Microsoft Graph change notifications for inbound and Graph mail APIs for outbound.
 
 Supports both dedicated bot mailboxes and shared mailboxes.

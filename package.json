@@ -2,7 +2,16 @@
   "name": "chat-adapter-outlook-email",
   "version": "0.1.0",
   "description": "Microsoft Outlook / M365 email adapter for Vercel Chat SDK via Microsoft Graph",
+  "author": "Kyle Kincer",
   "license": "MIT",
+  "homepage": "https://github.com/KyleKincer/chat-adapter-outlook-email#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KyleKincer/chat-adapter-outlook-email.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KyleKincer/chat-adapter-outlook-email/issues"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
