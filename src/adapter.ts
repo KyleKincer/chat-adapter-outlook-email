@@ -335,16 +335,11 @@ export class OutlookEmailAdapter
 
 		const latestMessage = messages.value[0] as GraphMessage;
 
-		// Create reply draft
+		// Create reply draft with body and bot header set upfront
+		// (internetMessageHeaders can only be set at creation, not via PATCH)
 		const draft = await this.graphClient.createReply(
 			mailbox,
 			latestMessage.id,
-		);
-
-		// Update draft body and set bot header
-		const updatedDraft = await this.graphClient.updateMessage(
-			mailbox,
-			draft.id,
 			{
 				body: { contentType: "html", content: html },
 				internetMessageHeaders: [
@@ -370,7 +365,7 @@ export class OutlookEmailAdapter
 		return {
 			id: draft.id,
 			threadId: encodeThreadId({ mailbox, conversationId }),
-			raw: updatedDraft,
+			raw: draft,
 		};
 	}
 

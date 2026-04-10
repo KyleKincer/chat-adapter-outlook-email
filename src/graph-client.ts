@@ -116,13 +116,28 @@ export class GraphClient {
 		options?: { top?: number; skip?: number; orderBy?: string },
 	): Promise<{ value: GraphMessage[]; "@odata.nextLink"?: string }> {
 		const top = options?.top ?? 25;
-		const orderBy = options?.orderBy ?? "receivedDateTime asc";
 		const filter = `conversationId eq '${conversationId}'`;
 		const skipParam = options?.skip ? `&$skip=${options.skip}` : "";
-		return this.request(
+		// Note: Exchange Online does not support combining conversationId filter
+		// with $orderby. We fetch without ordering and sort client-side.
+		const result = await this.request<{
+			value: GraphMessage[];
+			"@odata.nextLink"?: string;
+		}>(
 			"GET",
-			`/users/${encodeURIComponent(mailbox)}/messages?$filter=${encodeURIComponent(filter)}&$orderby=${encodeURIComponent(orderBy)}&$top=${top}${skipParam}`,
+			`/users/${encodeURIComponent(mailbox)}/messages?$filter=${encodeURIComponent(filter)}&$top=${top}${skipParam}`,
 		);
+
+		// Sort client-side since $orderby is not supported with this filter
+		const orderBy = options?.orderBy ?? "receivedDateTime asc";
+		const desc = orderBy.includes("desc");
+		result.value.sort((a, b) => {
+			const ta = new Date(a.receivedDateTime).getTime();
+			const tb = new Date(b.receivedDateTime).getTime();
+			return desc ? tb - ta : ta - tb;
+		});
+
+		return result;
 	}
 
 	// --- Reply ---
@@ -130,11 +145,12 @@ export class GraphClient {
 	async createReply(
 		mailbox: string,
 		messageId: string,
+		message?: Record<string, unknown>,
 	): Promise<GraphMessage> {
 		return this.request<GraphMessage>(
 			"POST",
 			`/users/${encodeURIComponent(mailbox)}/messages/${encodeURIComponent(messageId)}/createReply`,
-			{},
+			message ? { message } : {},
 		);
 	}
 
