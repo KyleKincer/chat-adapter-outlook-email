@@ -1,6 +1,6 @@
 {
   "name": "chat-adapter-outlook-email",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Microsoft Outlook / M365 email adapter for Vercel Chat SDK via Microsoft Graph",
   "author": "Kyle Kincer",
   "license": "MIT",
